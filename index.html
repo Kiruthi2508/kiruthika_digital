@@ -23,6 +23,8 @@
       --gray:     #6b7280;
       --dark:     #0d1326;
       --border:   rgba(26,60,175,.15);
+      --green:    #1a3caf;
+      --green-l:  #2e55d4;
     }
 
     /* ── RESET & BASE ── */
@@ -49,6 +51,693 @@
       transition: left .12s ease, top .12s ease, width .2s, height .2s, opacity .2s;
     }
     body:hover .cursor-ring { opacity:.5; }
+
+
+     .whatsapp-part {
+      background: linear-gradient(145deg, #fff 0%, #f9fafb 100%);
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated WhatsApp background decoration */
+    .whatsapp-bg-deco {
+      position: absolute;
+      border-radius: 50%;
+      opacity: .06;
+      pointer-events: none;
+    }
+    .whatsapp-bg-deco-1 {
+      width: 250px; height: 250px;
+      background: var(--green);
+      top: -80px; right: -80px;
+    }
+    .whatsapp-bg-deco-2 {
+      width: 200px; height: 200px;
+      background: var(--green-l);
+      bottom: -60px; left: -60px;
+    }
+
+    .whatsapp-content { position: relative; z-index: 1; }
+
+    /* WhatsApp icon animation */
+    .whatsapp-icon-wrapper {
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    .whatsapp-icon {
+      width: 90px; height: 90px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-l) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #fff;
+      box-shadow: 0 10px 40px rgba(16,185,129,.35);
+      animation: whatsappBounce 2s ease-in-out infinite;
+    }
+    @keyframes whatsappBounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%      { transform: translateY(-12px) scale(1.08); }
+    }
+
+    /* Pulsing ring around icon */
+    .whatsapp-icon::before {
+      content: '';
+      position: absolute;
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      border: 2px solid var(--green-l);
+      animation: whatsappPulse 2s ease-in-out infinite;
+    }
+    @keyframes whatsappPulse {
+      0%   { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1.5); }
+    }
+
+    .whatsapp-headline {
+      font-size: 1.5rem; font-weight: 800;
+      color: var(--dark); margin-bottom: .5rem;
+    }
+    .whatsapp-subline {
+      font-size: .95rem; color: var(--gray);
+      margin-bottom: 2rem; line-height: 1.65;
+      max-width: 380px;
+    }
+
+    /* WhatsApp buttons grid */
+    .whatsapp-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .wa-btn {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-l) 100%);
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      padding: 13px 20px;
+      font-family: 'Sora', sans-serif;
+      font-size: .95rem; font-weight: 700;
+      cursor: pointer;
+      transition: all .35s cubic-bezier(.34,1.3,.64,1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(16,185,129,.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Button shimmer effect */
+    .wa-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,.3), transparent);
+      animation: btnShimmer 3s ease-in-out infinite;
+    }
+    @keyframes btnShimmer {
+      0%   { left: -100%; }
+      50%  { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .wa-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 36px rgba(16,185,129,.45);
+    }
+    .wa-btn:active { transform: translateY(-1px); }
+
+    .wa-btn-icon {
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wa-btn-text { position: relative; z-index: 1; }
+
+    /* Optional: Second button style */
+    .wa-btn.secondary {
+      background: transparent;
+      color: var(--green);
+      border: 2px solid var(--green-l);
+      box-shadow: none;
+    }
+    .wa-btn.secondary:hover {
+      background: rgba(16,185,129,.1);
+      border-color: var(--green);
+      box-shadow: 0 8px 24px rgba(16,185,129,.2);
+    }
+
+    /* ── SOCIAL LINKS FOOTER ── */
+    .contact-footer {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .contact-footer p {
+      font-size: .9rem; color: var(--gray);
+      margin-bottom: 1.2rem;
+    }
+    .social-icons {
+      display: flex;
+      gap: .8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .social-icon {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--royal);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all .25s;
+      text-decoration: none;
+    }
+    .social-icon:hover {
+      background: var(--royal);
+      color: #fff;
+      border-color: var(--royal);
+      transform: translateY(-3px);
+    }
+
+    /* ══════════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════════ */
+    .fade-in-up {
+      animation: fadeInUp .6s ease both;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .info-card { animation-delay: var(--delay, 0s); }
+    .info-card:nth-child(1) { --delay: .1s; }
+    .info-card:nth-child(2) { --delay: .2s; }
+    .info-card:nth-child(3) { --delay: .3s; }
+
+    .whatsapp-part { animation: fadeInUp .7s ease .4s both; }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .contact-section { padding: 60px 0 80px; }
+      .contact-header { margin-bottom: 2rem; }
+      .contact-title { font-size: 1.8rem; }
+      .whatsapp-part { padding: 2rem 1.5rem; }
+      .whatsapp-icon { width: 70px; height: 70px; font-size: 2.2rem; }
+      .whatsapp-headline { font-size: 1.2rem; }
+      .info-card { padding: 1.2rem 1.4rem; }
+      .wa-btn { font-size: .85rem; padding: .75rem 1.2rem; }
+    }
+
+    @media (max-width: 576px) {
+      .contact-section { padding: 50px 0 60px; }
+      .contact-title { font-size: 1.5rem; }
+      .contact-subtitle { font-size: .9rem; }
+      .contact-grid { gap: 1.5rem; }
+      .whatsapp-icon { width: 60px; height: 60px; font-size: 1.8rem; }
+      .whatsapp-headline { font-size: 1rem; }
+      .whatsapp-subline { font-size: .85rem; margin-bottom: 1.5rem; }
+    }
+
+     /* ── Pricing ANIMATED BACKGROUND ── */
+    .pricing-page {
+      min-height: 100vh;
+      padding: 80px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated gradient orbs */
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .18;
+      pointer-events: none;
+      z-index: 0;
+      animation: orbFloat 12s ease-in-out infinite;
+    }
+    .bg-orb-1 {
+      width: 600px; height: 600px;
+      background: var(--royal-l);
+      top: -200px; right: -150px;
+      animation-delay: 0s;
+    }
+    .bg-orb-2 {
+      width: 500px; height: 500px;
+      background: var(--royal);
+      bottom: -150px; left: -100px;
+      animation-delay: 4s;
+    }
+    .bg-orb-3 {
+      width: 350px; height: 350px;
+      background: var(--royal-xl);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      animation-delay: 8s;
+    }
+    @keyframes orbFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(30px,-30px) scale(1.05); }
+      66%      { transform: translate(-20px,20px) scale(.95); }
+    }
+    .bg-orb-2 {
+      animation-name: orbFloat2;
+    }
+    @keyframes orbFloat2 {
+      0%,100% { transform: translate(0,0); }
+      50%      { transform: translate(40px,-40px); }
+    }
+
+    /* grid pattern overlay */
+    .bg-grid {
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(26,60,175,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,60,175,.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .pricing-inner { position: relative; z-index: 1; }
+
+    /* ── HEADER ── */
+    .pricing-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .72rem; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--royal);
+      margin-bottom: 1rem;
+    }
+    .pricing-eyebrow::before,
+    .pricing-eyebrow::after {
+      content: ''; display: block;
+      width: 24px; height: 2px;
+      background: var(--royal); border-radius: 2px;
+    }
+
+    .pricing-title {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800; line-height: 1.12;
+      color: var(--dark);
+    }
+    .pricing-title .accent { color: var(--royal); }
+
+    .pricing-sub {
+      font-size: 1rem; color: var(--gray);
+      max-width: 480px; margin: .8rem auto 0;
+      line-height: 1.7;
+    }
+
+    /* ── BILLING TOGGLE ── */
+    .toggle-wrap {
+      display: flex; align-items: center;
+      justify-content: center; gap: 12px;
+      margin: 2rem 0;
+    }
+    .toggle-label {
+      font-size: .88rem; font-weight: 700;
+      color: var(--gray); cursor: pointer;
+      transition: color .2s; user-select: none;
+    }
+    .toggle-label.active { color: var(--royal); }
+
+    .toggle-switch {
+      position: relative;
+      width: 52px; height: 28px;
+      background: var(--royal);
+      border-radius: 14px;
+      cursor: pointer; border: none; outline: none;
+      transition: background .3s;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(26,60,175,.4);
+    }
+    .toggle-switch::after {
+      content: '';
+      position: absolute; top: 4px; left: 4px;
+      width: 20px; height: 20px;
+      background: #fff; border-radius: 50%;
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+    }
+    .toggle-switch.yearly::after { transform: translateX(24px); }
+
+    .save-pill {
+      font-size: .72rem; font-weight: 700;
+      background: var(--light-g); color: var(--royal);
+      border-radius: 100px; padding: .25rem .7rem;
+      letter-spacing: .04em;
+      border: 1.5px solid var(--border);
+    }
+
+    /* ── CARDS GRID ── */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+    @media (max-width: 991px) { .plans-grid { grid-template-columns: 1fr; max-width: 420px; margin: auto; } }
+
+    /* ── PLAN CARD BASE ── */
+    .plan-card {
+      border-radius: var(--radius);
+      background: #fff;
+      border: 1.5px solid var(--border);
+      padding: 2.2rem 1.8rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: transform .35s cubic-bezier(.34,1.3,.64,1), box-shadow .35s;
+      cursor: default;
+      animation: cardIn .6s ease both;
+    }
+    .plan-card:nth-child(1) { animation-delay: .05s; }
+    .plan-card:nth-child(2) { animation-delay: .18s; }
+    .plan-card:nth-child(3) { animation-delay: .31s; }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(40px) scale(.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .plan-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 28px 70px rgba(26,60,175,.16);
+    }
+
+    /* corner decoration */
+    .plan-card::before {
+      content: '';
+      position: absolute; bottom: 0; right: 0;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,60,175,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ─ STARTER ─ */
+    .card-starter { border-top: 4px solid var(--royal-l); }
+    .card-starter .plan-icon-bg {
+      background: var(--light-g); color: var(--royal);
+    }
+    .card-starter .plan-btn {
+      background: var(--light-g); color: var(--royal);
+      border: 2px solid var(--border);
+    }
+    .card-starter .plan-btn:hover {
+      background: var(--royal); color: #fff;
+      border-color: var(--royal);
+      box-shadow: 0 10px 30px rgba(26,60,175,.3);
+    }
+    .card-starter .check-ic { background: var(--light-g); color: var(--royal); }
+
+    /* ─ PRO (Featured) ─ */
+    .card-pro {
+      background: linear-gradient(145deg, var(--royal-l) 0%, var(--royal) 50%, var(--royal-d) 100%);
+      border-color: transparent;
+      transform: scale(1.04);
+      box-shadow: 0 24px 70px rgba(26,60,175,.38);
+    }
+    .card-pro:hover {
+      transform: scale(1.04) translateY(-12px);
+      box-shadow: 0 36px 90px rgba(26,60,175,.5);
+    }
+    .card-pro::before {
+      background: radial-gradient(circle, rgba(255,255,255,.1) 0%, transparent 70%);
+    }
+    /* sheen sweep */
+    .card-pro::after {
+      content: '';
+      position: absolute; top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,.12), transparent);
+      animation: sheen 4s ease-in-out infinite;
+    }
+    @keyframes sheen { 0%,80%,100%{left:-100%} 40%{left:140%} }
+
+    .card-pro .plan-name,
+    .card-pro .plan-tagline,
+    .card-pro .plan-currency,
+    .card-pro .plan-amount,
+    .card-pro .plan-period,
+    .card-pro .feat-text   { color: #fff; }
+    .card-pro .plan-tagline,
+    .card-pro .plan-period { opacity: .7; }
+    .card-pro .feat-text.muted { opacity: .45; }
+    .card-pro .plan-divider { background: rgba(255,255,255,.18); }
+    .card-pro .plan-icon-bg { background: rgba(255,255,255,.2); color: #fff; }
+    .card-pro .check-ic { background: rgba(255,255,255,.2); color: #fff; }
+    .card-pro .check-ic.cross { background: rgba(255,255,255,.1); }
+    .card-pro .plan-btn {
+      background: #fff; color: var(--royal);
+      border: none;
+      font-weight: 800;
+    }
+    .card-pro .plan-btn:hover {
+      background: var(--light-g); color: var(--royal-d);
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(0,0,0,.15);
+    }
+    .card-pro .plan-orig-price { color: rgba(255,255,255,.4); }
+
+    /* ─ ELITE ─ */
+    .card-elite {
+      border: 2px solid var(--royal);
+      background: #fff;
+    }
+    .card-elite .plan-icon-bg { background: var(--royal); color: #fff; }
+    .card-elite .plan-btn {
+      background: var(--royal);
+      color: #fff; border: none;
+      box-shadow: 0 8px 24px rgba(26,60,175,.3);
+    }
+    .card-elite .plan-btn:hover {
+      background: var(--royal-d);
+      box-shadow: 0 14px 36px rgba(26,60,175,.45);
+      transform: scale(1.02);
+    }
+    .card-elite .check-ic { background: var(--royal); color: #fff; }
+
+    /* ── CARD INNER ELEMENTS ── */
+    .popular-badge {
+      position: absolute; top: 18px; right: 18px;
+      font-size: .68rem; font-weight: 800;
+      letter-spacing: .1em; text-transform: uppercase;
+      background: rgba(255,255,255,.2);
+      color: #fff; border-radius: 100px;
+      padding: .25rem .75rem;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.25);
+    }
+
+    .plan-icon-bg {
+      width: 54px; height: 54px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .plan-name {
+      font-size: 1rem; font-weight: 800;
+      letter-spacing: .02em; margin-bottom: .3rem;
+      color: var(--dark);
+    }
+    .plan-tagline {
+      font-size: .83rem; color: var(--gray);
+      line-height: 1.55; margin-bottom: 1.4rem;
+    }
+
+    .plan-price-row {
+      display: flex; align-items: baseline; gap: 3px;
+    }
+    .plan-currency {
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--dark); line-height: 1;
+    }
+    .plan-amount {
+      font-family: 'Sora', sans-serif;
+      font-size: 3rem; font-weight: 800; line-height: 1;
+      color: var(--dark);
+      transition: all .15s;
+    }
+    .plan-period {
+      font-size: .8rem; color: var(--gray);
+      align-self: flex-end; padding-bottom: .3rem;
+    }
+    .plan-orig-price {
+      font-size: .8rem; color: var(--gray);
+      text-decoration: line-through; margin-top: .25rem;
+      min-height: 1.2rem;
+    }
+
+    .plan-divider {
+      height: 1px; background: var(--border);
+      margin: 1.3rem 0;
+    }
+
+    .feature-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column; gap: .6rem;
+      flex: 1;
+    }
+    .feature-list li {
+      display: flex; align-items: center; gap: 9px;
+    }
+    .check-ic {
+      width: 20px; height: 20px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; flex-shrink: 0;
+    }
+    .check-ic.cross { background: var(--snow); color: var(--gray); }
+    .feat-text {
+      font-size: .875rem; color: var(--dark);
+    }
+    .feat-text.muted { color: var(--gray); opacity: .55; }
+
+    .plan-btn {
+      display: block; width: 100%;
+      border-radius: 100px;
+      padding: .82rem 1rem;
+      font-family: 'Sora', sans-serif;
+      font-size: .9rem; font-weight: 700;
+      cursor: pointer; margin-top: 1.6rem;
+      transition: all .28s cubic-bezier(.34,1.3,.64,1);
+      text-align: center; text-decoration: none;
+      letter-spacing: .02em;
+    }
+
+    /* ── GUARANTEE ROW ── */
+    .guarantee-row {
+      display: flex; align-items: center;
+      justify-content: center; gap: 8px;
+      font-size: .82rem; color: var(--gray);
+      margin-top: 2.5rem;
+    }
+    .guarantee-row i { color: var(--royal); font-size: 1rem; }
+    .sep { opacity: .35; }
+
+    /* ── FAQ CARDS ── */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem; margin-top: 3rem;
+    }
+    @media(max-width:767px){ .faq-grid { grid-template-columns: 1fr; } }
+
+    .faq-card {
+      background: #fff; border-radius: 14px;
+      border: 1.5px solid var(--border);
+      padding: 1.2rem 1.3rem;
+      transition: all .28s;
+    }
+    .faq-card:hover {
+      border-color: var(--royal);
+      box-shadow: 0 10px 30px rgba(26,60,175,.1);
+      transform: translateY(-4px);
+    }
+    .faq-card h5 {
+      font-size: .9rem; font-weight: 700;
+      margin-bottom: .4rem; color: var(--dark);
+    }
+    .faq-card p {
+      font-size: .82rem; color: var(--gray);
+      line-height: 1.65;
+    }
+    .faq-icon {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: var(--light-g); color: var(--royal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .95rem; margin-bottom: .75rem;
+    }
+
+    /* ── COMPARE TABLE ── */
+    .compare-toggle-btn {
+      background: transparent; border: 1.5px solid var(--border);
+      border-radius: 100px; padding: .5rem 1.4rem;
+      font-family: 'Sora', sans-serif; font-size: .85rem;
+      font-weight: 700; color: var(--royal); cursor: pointer;
+      transition: all .25s; margin-top: 1.5rem;
+    }
+    .compare-toggle-btn:hover {
+      background: var(--royal); color: #fff; border-color: var(--royal);
+    }
+
+    .compare-section {
+      display: none; margin-top: 2rem;
+      background: #fff; border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+    }
+    .compare-section.open { display: block; animation: fadeDown .4s ease; }
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:none} }
+
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th {
+      background: var(--snow);
+      font-family: 'Sora', sans-serif;
+      font-size: .85rem; font-weight: 700;
+      padding: 1rem 1.2rem;
+      border-bottom: 1.5px solid var(--border);
+      color: var(--dark); text-align: center;
+    }
+    .compare-table th:first-child { text-align: left; }
+    .compare-table th.th-pro { background: var(--royal); color: #fff; }
+    .compare-table td {
+      padding: .85rem 1.2rem;
+      font-size: .85rem; color: var(--gray);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .compare-table td:first-child {
+      text-align: left; color: var(--dark);
+      font-weight: 600; font-size: .85rem;
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: var(--snow); }
+    .compare-table td .tick { color: var(--royal); font-size: 1rem; }
+    .compare-table td .cross { color: #d1d5db; font-size: 1rem; }
+
+    /* ── CONFETTI ── */
+    .confetti-piece {
+      position: fixed; pointer-events: none; z-index: 9999;
+      border-radius: 3px;
+      animation: confettiFall linear forwards;
+    }
+    @keyframes confettiFall {
+      0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
 
     /* ── NAVBAR ── */
     #mainNav {
@@ -544,10 +1233,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
         <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
         <li class="nav-item"><a class="nav-link" href="#portfolio">Work</a></li>
         <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
         <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
         <li class="nav-item ms-lg-2"><a class="nav-link nav-cta " href="#contact">Hire Me</a></li>
       </ul>
@@ -573,7 +1264,7 @@
          I build modern, responsive, and user-friendly websites that help businesses establish a strong online presence and achieve their digital goals.
         </p>
         <div class="hero-btns mb-3">
-          <a href="#portfolio" class="btn btn-primary-custom" style="cursor:pointer;">View My Work</a>
+          <a href="https://wa.me/919047566443?text=Hi%20Kiruthika,%0A%0AI'm%20interested%20in%20working%20with%20you%20on%20my%20business%20website." class="btn btn-primary-custom" style="cursor:pointer;">View My Work</a>
           <a href="#contact"   class="btn btn-outline-custom">Let's Talk →</a>
         </div>
         <div class="hero-stats">
@@ -759,6 +1450,8 @@
   </div>
 </section>
 
+
+
 <!-- ══════════════ SKILLS ══════════════ -->
 <section id="skills">
   <div class="container">
@@ -791,6 +1484,194 @@
   </div>
 </section>
 
+<!-- ══════════════ PRICING ══════════════ -->
+<!-- Animated bg -->
+<!-- <div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+<div class="bg-grid"></div> -->
+
+<section class="pricing-page" id="pricing">
+  <div class="container pricing-inner">
+
+    <!-- Header -->
+    <div class="text-center mb-2">
+      <div class="pricing-eyebrow">Pricing Plans</div>
+      <h2 class="pricing-title">
+        Simple, <span class="accent">Transparent</span> Pricing
+      </h2>
+      <p class="pricing-sub">
+        Choose the plan that fits your goals. Every plan includes top-tier quality with no hidden fees.
+      </p>
+    </div>
+
+    <!-- Billing Toggle -->
+    <!-- <div class="toggle-wrap">
+      <span class="toggle-label active" id="lbl-monthly" onclick="setMode('monthly')">Monthly</span>
+      <button class="toggle-switch" id="toggleSwitch" onclick="toggleBilling()" aria-label="Toggle billing"></button>
+      <span class="toggle-label" id="lbl-yearly" onclick="setMode('yearly')">Yearly</span>
+      <span class="save-pill">Save 25%</span>
+    </div> -->
+
+    <!-- Plans Grid -->
+    <div class="plans-grid" id="plansGrid">
+
+      <!-- ── STARTER ── -->
+      <div class="plan-card card-starter" style="border-radius:30px">
+        <div class="plan-icon-bg"><i class="bi bi-feather"></i></div>
+        <div class="plan-name">Basic</div>
+        <div class="plan-tagline">Perfect for simple online presence</div>
+        <div class="plan-price-row">
+          <span class="plan-currency">$</span>
+          <span class="plan-amount" id="amt-starter">2999</span>
+          <span class="plan-period"></span>
+        </div>
+        <div class="plan-orig-price" id="orig-starter"></div>
+        <div class="plan-divider"></div>
+        <ul class="feature-list">
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Single Page Website</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Landing Page Website</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Contact form</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">WhatsApp Integration</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Modern & Clean UI Design</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Mobile responsive</span></li>
+          </ul>
+        <a href="https://wa.me/919047566443?text=Hi%20Kiruthika,%20I'm%20interested%20in%20your%20Basic%20Plan." class="plan-btn" >Get Started</a>
+      </div>
+
+      <!-- ── PRO (Featured) ── -->
+      <div class="plan-card card-pro" style="border-radius:30px">
+        <div class="popular-badge">Most Popular</div>
+        <div class="plan-icon-bg"><i class="bi bi-rocket-takeoff-fill"></i></div>
+        <div class="plan-name">Standard</div>
+        <div class="plan-tagline">The go-to plan for growing designers &amp; agencies.</div>
+        <div class="plan-price-row">
+          <span class="plan-currency">$</span>
+          <span class="plan-amount" id="amt-pro">8999</span>
+          <span class="plan-period"></span>
+        </div>
+        <div class="plan-orig-price" id="orig-pro"></div>
+        <div class="plan-divider"></div>
+        <ul class="feature-list">
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">6-7 Pages</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Mobile Resposive</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Advanced UI Design</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">WhatsApp Integration</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">SEO Optimization</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Custom Sections</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Image Customization</span></li>
+
+
+
+           </ul>
+        <a href="https://wa.me/919047566443?text=Hi%20Kiruthika,%20I'm%20interested%20in%20your%20Standard%20Plan." class="plan-btn">Get Started </a>
+      </div>
+
+      <!-- ── ELITE ── -->
+      <div class="plan-card card-elite" style="border-radius:30px">
+        <div class="plan-icon-bg"><i class="bi bi-crown-fill"></i></div>
+        <div class="plan-name">Premium</div>
+        <div class="plan-tagline">High performance custom solutions</div>
+        <div class="plan-price-row">
+          <span class="plan-currency">$</span>
+          <span class="plan-amount" id="amt-elite">12999</span>
+          <span class="plan-period"></span>
+        </div>
+        <div class="plan-orig-price" id="orig-elite"></div>
+        <div class="plan-divider"></div>
+        <ul class="feature-list">
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Fully Custom solution</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Advanced features</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Admin Panel</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Mobile responsive</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">Ongoing Support</span></li>          
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">SEO optimization</span></li>
+          <li><span class="check-ic"><i class="bi bi-check-lg"></i></span><span class="feat-text">WhatsApp Integration</span></li>
+          </ul>
+        <a href="https://wa.me/919047566443?text=Hi%20Kiruthika,%20I'm%20interested%20in%20your%20Premium%20Plan." class="plan-btn" >Get Started</a>
+      </div>
+
+    </div><!-- /plans-grid -->
+
+    <!-- Guarantee -->
+    <!-- <div class="guarantee-row">
+      <i class="bi bi-shield-fill-check"></i>
+      30-day money-back guarantee
+      <span class="sep">·</span>
+      Cancel anytime
+      <span class="sep">·</span>
+      No contracts
+    </div> -->
+
+    <!-- Compare Toggle -->
+    <!-- <div class="text-center">
+      <button class="compare-toggle-btn" id="compareBtn" onclick="toggleCompare()">
+        <i class="bi bi-table me-1"></i> Compare All Features
+      </button>
+    </div> -->
+
+    <!-- Compare Table -->
+    <!-- <div class="compare-section" id="compareTable">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Starter</th>
+            <th class="th-pro">Pro</th>
+            <th>Elite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Portfolio Projects</td>    <td>5</td>              <td>Unlimited</td>     <td>Unlimited</td></tr>
+          <tr><td>Custom Domain</td>         <td><i class="bi bi-check-circle-fill tick"></i></td><td><i class="bi bi-check-circle-fill tick"></i></td><td><i class="bi bi-check-circle-fill tick"></i></td></tr>
+          <tr><td>Contact Form</td>          <td>Basic</td>          <td>Advanced</td>      <td>Advanced</td></tr>
+          <tr><td>Mobile Responsive</td>     <td><i class="bi bi-check-circle-fill tick"></i></td><td><i class="bi bi-check-circle-fill tick"></i></td><td><i class="bi bi-check-circle-fill tick"></i></td></tr>
+          <tr><td>SEO Optimisation</td>      <td><i class="bi bi-x-circle cross"></i></td>  <td><i class="bi bi-check-circle-fill tick"></i></td><td><i class="bi bi-check-circle-fill tick"></i></td></tr>
+          <tr><td>Analytics Dashboard</td>   <td><i class="bi bi-x-circle cross"></i></td>  <td><i class="bi bi-check-circle-fill tick"></i></td><td><i class="bi bi-check-circle-fill tick"></i></td></tr>
+          <tr><td>Client Management</td>     <td><i class="bi bi-x-circle cross"></i></td>  <td><i class="bi bi-x-circle cross"></i></td>         <td><i class="bi bi-check-circle-fill tick"></i></td></tr>
+          <tr><td>Priority Support</td>      <td><i class="bi bi-x-circle cross"></i></td>  <td><i class="bi bi-check-circle-fill tick"></i></td><td><i class="bi bi-check-circle-fill tick"></i></td></tr>
+          <tr><td>White-label Option</td>    <td><i class="bi bi-x-circle cross"></i></td>  <td><i class="bi bi-x-circle cross"></i></td>         <td><i class="bi bi-check-circle-fill tick"></i></td></tr>
+          <tr><td>Team Members</td>          <td>1</td>              <td>3</td>             <td>Unlimited</td></tr>
+          <tr><td>Storage</td>              <td>2 GB</td>           <td>20 GB</td>         <td>100 GB</td></tr>
+          <tr><td>Free Trial</td>           <td>14 days</td>        <td>14 days</td>       <td>7 days</td></tr>
+        </tbody>
+      </table>
+    </div> -->
+
+    <!-- FAQ -->
+    <!-- <div class="faq-grid">
+      <div class="faq-card">
+        <div class="faq-icon"><i class="bi bi-arrow-left-right"></i></div>
+        <h5>Can I switch plans?</h5>
+        <p>Absolutely. Upgrade or downgrade anytime from your dashboard. Billing is prorated to the day.</p>
+      </div>
+      <div class="faq-card">
+        <div class="faq-icon"><i class="bi bi-credit-card-2-front"></i></div>
+        <h5>What payment methods?</h5>
+        <p>All major credit/debit cards, PayPal, and bank transfer for annual subscriptions.</p>
+      </div>
+      <div class="faq-card">
+        <div class="faq-icon"><i class="bi bi-gift"></i></div>
+        <h5>Is there a free trial?</h5>
+        <p>Starter &amp; Pro come with a 14-day free trial. No credit card required to get started.</p>
+      </div>
+    </div> -->
+
+  </div><!-- /container -->
+</section>
+<!-- ══════════════ CTA BAND ══════════════ -->
+<section id="cta-band" class="reveal">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <h2 class="mb-3">Ready to Build Your Website?</h2>
+        <p class="mb-4">Whether you need a business website, WordPress solution, admin panel, or custom web application, let's work together to bring your ideas to life.</p>
+        <a href="https://wa.me/919047566443?text=Hi%20Kiruthika,%0A%0AI'm%20interested%20in%20working%20with%20you%20on%20my%20business%20website." class="btn btn-white">Start Your Project →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════ TESTIMONIALS ══════════════ -->
 <section id="testimonials">
   <div class="container">
@@ -802,18 +1683,7 @@
   </div>
 </section>
 
-<!-- ══════════════ CTA BAND ══════════════ -->
-<section id="cta-band" class="reveal">
-  <div class="container text-center">
-    <div class="row justify-content-center">
-      <div class="col-lg-7">
-        <h2 class="mb-3">Ready to Build Your Website?</h2>
-        <p class="mb-4">Whether you need a business website, WordPress solution, admin panel, or custom web application, let's work together to bring your ideas to life.</p>
-        <a href="#contact" class="btn btn-white">Start Your Project →</a>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ══════════════ CONTACT ══════════════ -->
 <section id="contact">
@@ -857,120 +1727,53 @@
               <div class="ci-val">Within 24 hours</div>
             </div>
           </div>
-          <div class="social-links mt-2" style="--bs-link-color:transparent">
-            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="social-link"><i class="bi bi-behance"></i></a>
-            <a href="#" class="social-link"><i class="bi bi-dribbble"></i></a>
-            <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
-          </div>
+          
         </div>
       </div>
       <!-- Contact Form -->
       <div class="col-lg-8 reveal">
-        <div style="background:#fff;border-radius:24px;border:1px solid var(--border);padding:2.5rem">
-          <form id="contactForm" novalidate>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <input type="text" class="form-control" id="fname" placeholder="First Name" required minlength="2">
-                  <label for="fname">First Name *</label>
-                  <div class="invalid-feedback">Please enter a valid first name (min 2 chars).</div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <input type="text" class="form-control" id="lname" placeholder="Last Name" required minlength="2">
-                  <label for="lname">Last Name *</label>
-                  <div class="invalid-feedback">Please enter a valid last name.</div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <input type="email" class="form-control" id="email" placeholder="Email" required>
-                  <label for="email">Email Address *</label>
-                  <div class="invalid-feedback">Please enter a valid email address.</div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <input type="tel" class="form-control" id="phone" placeholder="Phone" pattern="[+\d\s\-\(\)]{7,15}">
-                  <label for="phone">Phone *</label>
-                  <div class="invalid-feedback">Enter a valid phone number.</div>
-                </div>
-              </div>
-              <!-- <div class="col-12">
-                <div class="form-floating">
-                  <select class="form-select" id="service" required style="padding:1.2rem 1rem .5rem">
-                    <option value="" disabled selected></option>
-                    <option>Website Design</option>
-                    <option>Brand Identity</option>
-                    <option>UI/UX Design</option>
-                    <option>Print Design</option>
-                    <option>Motion & Animation</option>
-                    <option>Social Media Design</option>
-                    <option>Other</option>
-                  </select>
-                  <label for="service">Service Needed *</label>
-                  <div class="invalid-feedback">Please select a service.</div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <select class="form-select" id="budget" required style="padding:1.2rem 1rem .5rem">
-                    <option value="" disabled selected></option>
-                    <option>Under $500</option>
-                    <option>$500 – $1,500</option>
-                    <option>$1,500 – $5,000</option>
-                    <option>$5,000 – $10,000</option>
-                    <option>$10,000+</option>
-                  </select>
-                  <label for="budget">Budget Range *</label>
-                  <div class="invalid-feedback">Please select a budget range.</div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <select class="form-select" id="timeline" required style="padding:1.2rem 1rem .5rem">
-                    <option value="" disabled selected></option>
-                    <option>ASAP</option>
-                    <option>Within 1 month</option>
-                    <option>1 – 3 months</option>
-                    <option>3 – 6 months</option>
-                    <option>Flexible</option>
-                  </select>
-                  <label for="timeline">Timeline *</label>
-                  <div class="invalid-feedback">Please select a timeline.</div>
-                </div>
-              </div> -->
-              <div class="col-12">
-                <div class="form-floating">
-                  <textarea class="form-control" id="message" placeholder="Message" style="height:130px;resize:none" required minlength="20" maxlength="800"></textarea>
-                  <label for="message">Project Details *</label>
-                  <div class="invalid-feedback">Please describe your project</div>
-                </div>
-                <div class="char-counter mt-1"><span id="charCount">0</span>/800</div>
-              </div>
-              <div class="col-12">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="terms" required>
-                  <label class="form-check-label" for="terms" style="font-size:.85rem">
-                    I agree to the <a href="#" style="color:var(--royal)">Privacy Policy</a> and consent to being contacted about my inquiry. *
-                  </label>
-                  <div class="invalid-feedback">You must agree before submitting.</div>
-                </div>
-              </div>
-              <div class="col-12 mt-2">
-                <button type="submit" class="btn btn-submit" id="submitBtn">
-                  <span id="btnText"><i class="bi bi-send me-2"></i>Send Message</span>
-                  <span id="btnLoading" class="d-none">
-                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>Sending…
-                  </span>
-                </button>
-              </div>
+        <!-- ══ PART 2: WHATSAPP CTA ══ -->
+      
+
+         <div style="background:#fff;border-radius:24px;border:1px solid var(--border);padding:2.5rem">
+          <!-- ══ PART 2: WHATSAPP CTA ══ -->
+      <div class="whatsapp-part fade-in-up">
+        <!-- Background decorations -->
+        <div class="whatsapp-bg-deco whatsapp-bg-deco-1"></div>
+        <div class="whatsapp-bg-deco whatsapp-bg-deco-2"></div>
+
+        <!-- Content -->
+        <div class="whatsapp-content d-flex flex-column justify-content-center align-items-center">
+          <!-- WhatsApp Icon -->
+          <div class="whatsapp-icon-wrapper">
+            <div class="whatsapp-icon">
+              <i class="bi bi-whatsapp"></i>
             </div>
-          </form>
+          </div>
+
+          <!-- Headline & Subline -->
+          <h3 class="whatsapp-headline">Lets Work Together</h3>
+          <p class="whatsapp-subline">
+            Have a Project i mind? Feel free to reach out.
+          </p>
+
+          <!-- WhatsApp Buttons -->
+          <div class="whatsapp-buttons">
+            
+
+            <!-- Button 2: Website Design -->
+            <a href="https://wa.me/18005550199?text=Hi%20Adsmedigital%2C%20I%27m%20interested%20in%20website%20design%20services.%20Can%20you%20provide%20a%20quote%3F" 
+               target="_blank" class="wa-btn" title="Website design inquiry">
+              <span class="wa-btn-icon"><i class="bi bi-whatsapp"></i></span>
+              <span class="wa-btn-text">Whatsapp</span>
+            </a>
+
+            
+          </div>
         </div>
+      </div>
+                       
+         </div> 
       </div>
     </div>
   </div>
@@ -995,7 +1798,7 @@
       <div class="col-md-4 text-md-end">
         <div class="social-links justify-content-md-end mb-2">
           <a href="https://www.linkedin.com/in/kiruthika8" class="social-link"><i class="bi bi-linkedin"></i></a>
-          <a href="https://wa.me/919047566443?text=Hi%20Kiruthika,%20I%20want%20a%20website" class="social-link"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://wa.me/919047566443?text=Hi%20Kiruthika,%20I%20saw%20your%20portfolio%20and%20I%20would%20like%20to%20work%20with%20you." class="social-link"><i class="bi bi-whatsapp"></i></a>
           <!-- <a href="#" class="social-link"><i class="bi bi-dribbble"></i></a> -->
           <a href="https://www.instagram.com/kiruthika_digital" class="social-link"><i class="bi bi-instagram"></i></a>
         </div>
@@ -1009,8 +1812,10 @@
   </div>
 </footer>
 
-<!-- Bootstrap JS -->
+<!-- Bootstrap JS  + JQuery-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
 <script>
 /* ── DATA ── */
 const portfolioItems = [
@@ -1176,60 +1981,9 @@ document.querySelectorAll('a,button,.port-card,.service-card').forEach(el=>{
   el.addEventListener('mouseleave',()=>{ ring.style.width='36px';ring.style.height='36px';ring.style.opacity='.5'; });
 });
 
-/* ── CHAR COUNTER ── */
-const msgArea = document.getElementById('message');
-const charCount = document.getElementById('charCount');
-msgArea.addEventListener('input',()=>charCount.textContent=msgArea.value.length);
 
-/* ── FORM VALIDATION ── */
-const form = document.getElementById('contactForm');
-const fields = ['fname','lname','email','phone','service','budget','timeline','message','terms'];
 
-function validateField(el){
-  if(!el) return true;
-  if(el.type==='checkbox'){
-    el.classList.toggle('is-invalid', !el.checked);
-    el.classList.toggle('is-valid',   el.checked);
-    return el.checked;
-  }
-  const valid = el.checkValidity();
-  el.classList.toggle('is-invalid', !valid);
-  el.classList.toggle('is-valid',    valid);
-  return valid;
-}
 
-fields.forEach(id=>{
-  const el = document.getElementById(id);
-  if(el) el.addEventListener('input', ()=>validateField(el));
-  if(el && el.tagName==='SELECT') el.addEventListener('change', ()=>validateField(el));
-});
-
-form.addEventListener('submit', async e=>{
-  e.preventDefault();
-  let allValid=true;
-  fields.forEach(id=>{ if(!validateField(document.getElementById(id))) allValid=false; });
-  if(!allValid) return;
-
-  // Simulate submission
-  const btn     = document.getElementById('submitBtn');
-  const btnText = document.getElementById('btnText');
-  const btnLoad = document.getElementById('btnLoading');
-  btn.disabled=true; btnText.classList.add('d-none'); btnLoad.classList.remove('d-none');
-
-  await new Promise(r=>setTimeout(r,2000));
-
-  btn.disabled=false; btnText.classList.remove('d-none'); btnLoad.classList.add('d-none');
-  form.reset();
-  charCount.textContent='0';
-  fields.forEach(id=>{
-    const el=document.getElementById(id);
-    if(el){ el.classList.remove('is-valid','is-invalid'); }
-  });
-
-  const toast = document.getElementById('successToast');
-  toast.classList.add('show');
-  setTimeout(()=>toast.classList.remove('show'),4000);
-});
 
 
 
@@ -1239,6 +1993,150 @@ buildSkills();
 buildTestimonials();
 initReveal();
 setTimeout(initSkillBars, 500);
+
+// Simple scroll reveal animation for info cards
+  const cards = document.querySelectorAll('.info-card, .whatsapp-part');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in-up');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .1 });
+  
+  cards.forEach(card => observer.observe(card));
+
+  // WhatsApp button click handler (optional: for tracking or additional logic)
+  document.querySelectorAll('.wa-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      // You can add custom tracking or logging here
+      console.log('WhatsApp button clicked:', this.textContent.trim());
+      // The href will automatically open WhatsApp in a new tab
+    });
+  });
+
+  // Ripple effect on button click (optional enhancement)
+  document.querySelectorAll('.wa-btn, .social-icon').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      if (e.clientX && e.clientY) {
+        const x = e.clientX - this.getBoundingClientRect().left;
+        const y = e.clientY - this.getBoundingClientRect().top;
+        // Ripple logic can be added here if needed
+      }
+    });
+  });
+
+
+
+
+/* ── PRICING DATA ── */
+const prices = {
+  starter: { monthly: 29,  yearly: 22  },
+  pro:     { monthly: 79,  yearly: 59  },
+  elite:   { monthly: 149, yearly: 112 },
+};
+
+let mode = 'monthly';
+
+/* ── TOGGLE ── */
+function toggleBilling() {
+  mode = (mode === 'monthly') ? 'yearly' : 'monthly';
+  updateUI();
+}
+function setMode(m) {
+  mode = m;
+  updateUI();
+}
+
+function updateUI() {
+  const sw = document.getElementById('toggleSwitch');
+  sw.classList.toggle('yearly', mode === 'yearly');
+  document.getElementById('lbl-monthly').classList.toggle('active', mode === 'monthly');
+  document.getElementById('lbl-yearly').classList.toggle('active',  mode === 'yearly');
+
+  Object.keys(prices).forEach(plan => {
+    const target = prices[plan][mode];
+    const orig   = mode === 'yearly' ? prices[plan].monthly : null;
+    animatePrice('amt-' + plan, target);
+    const origEl = document.getElementById('orig-' + plan);
+    origEl.innerHTML = orig
+      ? `<s style="margin-right:4px">$${orig}/mo</s> billed monthly`
+      : '';
+  });
+}
+
+/* ── ANIMATED COUNTER ── */
+function animatePrice(id, target) {
+  const el   = document.getElementById(id);
+  const start = parseInt(el.textContent);
+  const diff  = target - start;
+  const dur   = 320;
+  const t0    = performance.now();
+
+  function step(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    const ease = p < .5 ? 2 * p * p : -1 + (4 - 2 * p) * p;
+    el.textContent = Math.round(start + diff * ease);
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+/* ── COMPARE TABLE ── */
+let compareOpen = false;
+function toggleCompare() {
+  compareOpen = !compareOpen;
+  const tbl = document.getElementById('compareTable');
+  const btn = document.getElementById('compareBtn');
+  tbl.classList.toggle('open', compareOpen);
+  btn.innerHTML = compareOpen
+    ? '<i class="bi bi-chevron-up me-1"></i> Hide Comparison'
+    : '<i class="bi bi-table me-1"></i> Compare All Features';
+  if (compareOpen) tbl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/* ── PLAN BUTTON ── */
+function choosePlan(planName, btn) {
+  // Confetti burst
+  spawnConfetti(btn);
+
+  const orig = btn.textContent;
+  btn.textContent = '✓ Selected!';
+  btn.style.opacity = '.85';
+  setTimeout(() => {
+    btn.textContent = orig;
+    btn.style.opacity = '';
+  }, 2000);
+}
+
+/* ── CONFETTI ── */
+function spawnConfetti(origin) {
+  const colors = ['#1a3caf','#2e55d4','#5b7ef0','#ffffff','#93c5fd'];
+  const rect   = origin.getBoundingClientRect();
+  const cx     = rect.left + rect.width / 2;
+  const cy     = rect.top;
+
+  for (let i = 0; i < 36; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    const size  = Math.random() * 8 + 5;
+    const angle = Math.random() * 360;
+    const spread = (Math.random() - .5) * 200;
+    el.style.cssText = `
+      left:${cx + spread}px; top:${cy}px;
+      width:${size}px; height:${size * .5}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      transform:rotate(${angle}deg);
+      animation-duration:${Math.random() * .8 + .8}s;
+      animation-delay:${Math.random() * .2}s;
+    `;
+    document.body.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+}
+
+
 </script>
 </body>
 </html>
